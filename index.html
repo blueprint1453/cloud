@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>我的网易云音乐</title>
+  <link rel="stylesheet" href="./asset/mui/css/mui.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="headbar">
+      <header class="mui-bar mui-bar-nav" id="head">
+          <img src="./images/icon.png" alt="">
+          <h2>网易云音乐</h2>
+          <span class="down-app">下载APP</span>
+      </header>
+      <!-- 导航 -->
+      <nav id="nav">
+          <div class="mui-content">
+              <ul class="mui-table-view mui-grid-view mui-grid-9">
+                  <li class=" mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#" class="active">
+                      <div class="mui-media-body">推荐音乐</div></a>
+                  </li>
+                  <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                      <div class="mui-media-body">热歌榜</div></a>
+                  </li>
+                  <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                      <div class="mui-media-body">搜索</div></a>
+                  </li>
+              </ul> 
+      </div>
+      </nav>
+  </div>
+  <div id="content">
+    <div class="good-music">
+      <h3>精品歌单</h3>
+      <ul class="mui-table-view mui-grid-view good-list">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+            <a href="#">
+                <span class="playCount">14.3万</span>
+                <img class="mui-media-object" src="http://p1.music.126.net/4qDgZNvbFwZk5Frcyhyhyg==/18642219650776037.jpg">
+                <div class="mui-media-body">幸福就是可以一起睡觉</div>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+            <a href="#">
+                <img class="mui-media-object" src="http://p1.music.126.net/4qDgZNvbFwZk5Frcyhyhyg==/18642219650776037.jpg">
+                <div class="mui-media-body">想要一间这样的木屋，静静的喝咖啡</div></a></li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+            <a href="#"><img class="mui-media-object" src="http://p1.music.126.net/4qDgZNvbFwZk5Frcyhyhyg==/18642219650776037.jpg">
+                <div class="mui-media-body">Color of SIP CBD</div></a></li>
+      </ul>
+    </div>
+    <!-- 最新音乐 -->
+    <div class="new-songs music-list">
+       <h3>最新音乐</h3>
+       <ul class="mui-table-view new-list">
+          <li class="mui-table-view-cell">
+            <a href="#">
+              <h4>等你下课</h4>
+              <p><i></i>周杰伦-等你下课</p>
+              <i class="play-button"></i>
+            </a>
+          </li>
+          <li class="mui-table-view-cell">Item 2</li>
+          <li class="mui-table-view-cell">Item 3</li>
+       </ul>
+    </div>
+  </div>
+  <script src="./asset/zepto/zepto.min.js"></script>
+  <script src="./asset/artTemplate/template-web.js"></script>
+  <script src="./js/index.js"></script>
+  <!-- 精品歌单的模板引擎 -->
+  <script type="text/html" id="good-music">
+    {{each playlists value index }}
+    <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <a href="./music/highquality_detail.html?id={{value.id}}" data-id="{{value.id}}">
+            <span class="playCount">{{(value.playCount/10000).toFixed(1)}}万</span>
+            <img class="mui-media-object" src="{{value.coverImgUrl}}">
+            <div class="mui-media-body">{{value.name}}</div>
+        </a>
+    </li>
+    {{/each}}
+  </script>
+  <!-- 最新音乐部分的模板引擎 -->
+  <script type="text/html" id="new-list">
+    {{each result value index}}
+    <li class="mui-table-view-cell">
+        <a href="music/play.html?{{value.id}}">
+          <h4>{{value.name}}</h4>
+          <p class="mui-ellips"><i></i>{{value.song.artists[0].name}}-{{value.song.name}}</p>
+          <i class="play-button"></i>
+        </a>
+    </li>
+    {{/each}}
+  </script>
+</body>
+</html>
